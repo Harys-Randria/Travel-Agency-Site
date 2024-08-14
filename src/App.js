@@ -1,10 +1,12 @@
 import './App.css';
-import Header from './components/Header';
+import DestinationsList from './pages/DestinationList';
+import HeroSection from './pages/HeroSection';
 
 function App() {
   return (
     <div>
-        <Header />
+        <HeroSection />
+        <DestinationsList />
     </div>
   );
 }
