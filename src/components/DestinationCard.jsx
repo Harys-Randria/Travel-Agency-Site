@@ -1,34 +1,21 @@
 import React from 'react';
 
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Typography,
-  Button,
-} from "@material-tailwind/react";
-
 const DestinationCard = ({ image, title, description, link }) => {
   return (
-    <Card className="mt-6 w-96">
-      <CardHeader color="blue-gray" className="relative h-56">
-        <img
-          src={image} alt={title}
-        />
-      </CardHeader>
-      <CardBody>
-        <Typography variant="h5" color="blue-gray" className="mb-2">
-          {title}
-        </Typography>
-        <Typography>
-          {description}
-        </Typography>
-      </CardBody>
-      <CardFooter className="pt-0">
-        <Button>Read More</Button>
-      </CardFooter>
-    </Card>
+    <div className=" rounded overflow-hidden shadow-lg">
+    <img className="w-full h-[250px]" src={image} alt={title} />
+    <div className="px-6 py-4">
+      <div className="font-bold text-xl mb-2">{title}</div>
+      <p className="text-gray-700 text-base">
+        {description}
+      </p>
+    </div>
+    <div className="px-6 pt-4 pb-2">
+      <a href={link} className="bg-blue-500 text-white font-bold py-2 px-4 rounded">
+        Read More
+      </a>
+    </div>
+  </div>
   );
 };
 
