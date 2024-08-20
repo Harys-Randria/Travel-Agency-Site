@@ -29,48 +29,40 @@ const OfferList = () => {
 
   return (
     <div className="flex justify-center items-center p-5">
-        <div className="relative rounded-3xl w-[95%] h-[580px] bg-cover bg-no-repeat bg-center 
-            flex flex-col py-5 gap-3 justify-center items-center"
-            style={{
-                backgroundImage: `url(${OfferBg})`,
-            }}
-        >
-            {/* Overlay pour assombrir l'image */}
+        <div className="relative rounded-3xl w-[95%] h-auto bg-cover bg-no-repeat bg-center py-5 gap-3 justify-center items-center"
+            style={{ backgroundImage: `url(${OfferBg})` }}>
             <div className="absolute inset-0 bg-black bg-opacity-50 rounded-3xl"></div>
-
-            {/* Titre et bouton */}
             <div className='relative w-[90%] h-12 flex flew-row justify-between items-center z-10'>
-                <h1 className='text-white text-3xl font-Spinnaker'>
-                    Nos meilleures Offres
-                </h1>
-                <TravelButton 
-                    text={'All Offers'}
-                />
+                <h1 className='text-white text-3xl font-Spinnaker'>Nos meilleures Offres</h1>
+                <TravelButton text={'All Offers'} />
             </div>
             
-            {/* Cartes */}
-            <div className="relative w-[90%] h-[420px]">
+            <div className="relative w-[90%]">
                 <Swiper
-                    spaceBetween={0}
+                    spaceBetween={30}
                     slidesPerView={3}
-                    centeredSlides={false}
-                    pagination={{ clickable: true }}
+                    breakpoints={{
+                    640: { slidesPerView: 1 },
+                    1024: { slidesPerView: 3 },
+                    }}
+                    pagination={{ clickable: true, dynamicBullets: true }}
                     className="swiper centered-slide-carousel"
                 >
                     {deals.map((deal, index) => (
-                        <SwiperSlide key={index}>
-                            <OfferCard
-                                image={deal.image}
-                                destination={deal.destination}
-                                price={deal.price}
-                                description={deal.description}
-                            />
-                        </SwiperSlide>
+                    <SwiperSlide key={index}>
+                        <OfferCard
+                        image={deal.image}
+                        destination={deal.destination}
+                        price={deal.price}
+                        description={deal.description}
+                        />
+                    </SwiperSlide>
                     ))}
                 </Swiper>
             </div>
         </div>
     </div>
+
   );
 };
 
