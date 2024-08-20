@@ -9,8 +9,8 @@ const HeroSection = () => {
       {/* Overlay */}
       <div className="absolute inset-0 bg-black opacity-50"></div>
       <div className='absolute inset-0 flex flex-col items-center justify-center text-center'>
-        <h1 className='text-white text-5xl font-bold mb-4'>Welcome to Madaweaver Travel</h1>
-        <p className='text-white text-xl'>Discover the beauty of Madagascar with us</p>
+        <h1 className='text-white text-7xl font-GreatVibes mb-4' >Welcome to Madaweaver Travel</h1>
+        <p className='text-white text-xl font-Spinnaker font' >Discover the beauty of Madagascar with us</p>
       </div>
     </div>
   );
