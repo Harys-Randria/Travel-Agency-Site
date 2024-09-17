@@ -1,21 +1,26 @@
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Footer from './components/Footer';
 import NavigationBar from './components/Navbar/NavigationBar';
-import HebergementList from './pages/HebergementList';
-import AboutUs from './section/AboutUs';
-import Destination from './section/Destination';
-import Testimonials from './section/Testimonials';
+import HomePage from './pages/HomePage';
+import TripPage from './pages/TripPage';
+import DetailsPage from './pages/DetailsPage';
+import MySection from './components/sample/MySection';
 
 function App() {
   return (
-    <div>
-        <NavigationBar />
-        <AboutUs />
-        <HebergementList />
-        <Destination/>
-        <Testimonials />
-        <Footer />
-    </div>
+    <Router>
+      <div className='font-Spinnaker'>
+          <NavigationBar />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/trip" element={<TripPage />} />
+            <Route path="/destination-details/:id" element={<DetailsPage />} />
+            <Route path='/sample' element={ <MySection /> } />
+          </Routes>
+          <Footer />
+      </div>
+    </Router>
   );
 }
 
