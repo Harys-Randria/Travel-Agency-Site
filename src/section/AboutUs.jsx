@@ -1,61 +1,41 @@
-import React from 'react'
-import playa from '../assets/images/playa.jpg'
-import TravelButton from '../components/TravelButon'
+import React from 'react';
+import { Parallax } from 'react-scroll-parallax';
+import playa from '../assets/images/playa.jpg';
+import TravelButton from '../components/TravelButon';
 
 const AboutUs = () => {
   return (
-    <div className='w-screen h-screen font-Spinnaker text-white relative' style={{
-        backgroundImage: `url(${playa})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        minHeight: '480px'
-    }}>
+    <div className='w-screen h-screen font-Poppins text-white relative overflow-hidden' style={{ minHeight: '480px' }}>
+      {/* Parallax background image */}
+      <Parallax speed={-20}>
+        <div 
+          style={{
+            backgroundImage: `url(${playa})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            height: '100vh',
+          }}
+        ></div>
+      </Parallax>
+
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black opacity-50"></div>
+      {/* <div className="absolute inset-0 bg-black opacity-50"></div> */}
 
-      <div className='relative max-w-7xl mx-auto py-20 flex flex-col h-full items-center'>
+      {/* Content section */}
+      <div className="absolute inset-0 z-10 flex flex-col justify-center p-10 max-w-7xl mx-auto">
+        <div className="w-full lg:w-1/2">
+          {/* Title and description */}
+          <h1 className="text-5xl font-bold mb-4">Discover the Hidden Gems of Madagascar: Your Adventure Awaits!</h1>
+          <p className="text-lg mb-8">
+            We are the best Tour Operator in Madagascar, offering unforgettable experiences across the island.
+          </p>
 
-        {/* En tête */}
-        <div className='flex flex-row w-full h-auto justify-between items-center px-10'>
-
-            {/* Titre */}
-            <div>
-                <h1 className='text-5xl font-bold leading-tight mb-2'>About Us</h1>
-                <p className='text-lg'>The best Tour Operator in Madagascar</p>
-            </div>
-
-            {/* CTA */}
-            <a href="/" 
-               className=" text-white py-2 px-4 rounded-full shadow-lg hover:scale-105 transition duration-300 text-lg font-semibold whitespace-nowrap"
-               style={{ minWidth: '200px', textAlign: 'center' }}>
-                Réservez dès maintenant
-            </a>
-        </div>
-
-        {/* Corps */}
-        <div className='flex flex-row h-full w-full justify-center'>
-
-            {/* Description */}
-            <div className='w-full text-left m-5 flex flex-col justify-center mr-[150px]'>
-                <div>
-                    <p className='text-2xl font-medium leading-relaxed'>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, nihil dolor. 
-                        Perferendis, dolorem! Quaerat officiis aspernatur alias fugit ab autem?
-                    </p>
-                </div>
-                <div className="mt-5">
-                    <TravelButton text={'Découvrir'} />
-                </div>
-            </div>
-
-            {/* Images */}
-            <div className='bg-light-green-500 w-full m-5 flex justify-center items-center rounded-lg shadow-lg'>
-                <img src={playa} alt="images" className='object-cover rounded-lg h-full' />
-            </div>
+          {/* CTA Button */}
+          <TravelButton text={'Start Your Journey Now'} />
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default AboutUs
+export default AboutUs;

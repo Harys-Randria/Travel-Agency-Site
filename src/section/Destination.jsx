@@ -78,9 +78,9 @@ const Destination = () => {
   ];
 
   return (
-    <div className='bg-pearl py-20 font-Spinnaker'>
+    <div className='bg-pearl py-20 font-Poppins'>
       <div className='text-center mb-12'>
-        <h1 className='text-5xl font-bold text-black'>Explorez Nos Destinations</h1>
+        <h1 className='font-normal text-5xl font-Poppins text-gray-900 mb-6'>Explorez Nos Destinations</h1>
         <p className='text-lg mt-4 text-gray-600'>Découvrez des lieux extraordinaires à travers Madagascar.</p>
       </div>
       <div className='max-w-7xl mx-auto'>

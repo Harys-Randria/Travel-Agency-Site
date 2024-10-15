@@ -6,21 +6,26 @@ import HomePage from './pages/HomePage';
 import TripPage from './pages/TripPage';
 import DetailsPage from './pages/DetailsPage';
 import MySection from './components/sample/MySection';
+import { ParallaxProvider } from 'react-scroll-parallax';
+import CarRentalPage from './pages/CarRentalPage';
 
 function App() {
   return (
-    <Router>
-      <div className='font-Spinnaker'>
+    <ParallaxProvider>
+      <Router>
+        <div className='font-Poppins'>
           <NavigationBar />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/trip" element={<TripPage />} />
             <Route path="/destination-details/:id" element={<DetailsPage />} />
             <Route path='/sample' element={ <MySection /> } />
+            <Route path='/cars' element={ <CarRentalPage /> } />
           </Routes>
           <Footer />
-      </div>
-    </Router>
+        </div>
+      </Router>
+    </ParallaxProvider>
   );
 }
 

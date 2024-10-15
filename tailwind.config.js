@@ -20,6 +20,7 @@ module.exports = withMT({
       fontFamily: {
         Spinnaker: ['Spinnaker', 'sans-serif'],
         GreatVibes: ['Great Vibes', 'cursive'],
+        Poppins: ['Poppins', 'sans-serif'],
       },
 
     },
