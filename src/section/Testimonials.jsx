@@ -2,21 +2,26 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { useParallax } from 'react-scroll-parallax';
 
-// Témoignages
 const testimonials = [
   {
-    testimonial: 'This was the most amazing trip of my life! The beaches were stunning, and the experience was unforgettable.',
-    name: 'John Doe',
-    location: 'New York, USA',
+    testimonial: 'From start to finish, everything was seamless. The tours, the service, the unforgettable experiences – 10/10!',
+    name: 'David Lee',
+    location: 'London, UK',
+    rating: 10
   },
   {
-    testimonial: 'A perfect getaway! The tropical ambiance and warm hospitality made this vacation truly special.',
-    name: 'Jane Smith',
-    location: 'London, UK',
+    testimonial: 'This was the trip of a lifetime! The beaches, the people, the adventure – everything was absolutely perfect.',
+    name: 'Michael Roberts',
+    location: 'Sydney, Australia',
+    rating: 9.5
   },
-  // Ajoute plus de témoignages si nécessaire...
+  {
+    testimonial: 'Madagascar is beyond beautiful, and MadaWeaver made it easy to explore every hidden gem. Simply magical!',
+    name: 'Sarah Johnson',
+    location: 'California, USA',
+    rating: 9.8
+  },
 ];
 
 const settings = {
@@ -26,51 +31,56 @@ const settings = {
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
-  autoplaySpeed: 4000,
+  autoplaySpeed: 5000,
   arrows: false,
 };
 
 const TestimonialSection = () => {
-  // Appliquer l'effet parallaxe à l'image de fond
-  const parallax = useParallax({
-    speed: -20,
-  });
-
   return (
-    <div className="w-screen h-[70vh] font-Poppins text-white relative overflow-hidden" style={{ minHeight: '480px' }}>
-      
-      {/* Parallax background image */}
-      <div 
-        ref={parallax.ref}  // Attacher l'effet de parallaxe à l'image de fond
-        className="absolute inset-0"
+    <div className="relative w-full h-[90vh] font-Poppins text-white overflow-hidden">
+      {/* Background Image Test */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: `url('https://cdn.pixabay.com/photo/2020/04/26/16/29/nosy-bee-5096063_1280.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          zIndex: 0,  // Assure que l'image reste derrière le contenu
+          filter: 'brightness(0.5)', // Pour assombrir et tester la visibilité
+          zIndex: '-1', 
         }}
-      ></div>
+      />
 
-      {/* Overlay pour améliorer la lisibilité du texte */}
-      <div className="absolute inset-0 bg-black opacity-20 z-10"></div>
-
-      <div className=" h-full flex flex-col items-center justify-center py-14">
-        {/* Titre et sous-titre */}
-        <div className="relative z-20 text-center mb-12 max-w-7xl mx-auto px-4 lg:px-0">
-          <h2 className="text-5xl font-normal lg:text-5xl ">What Our Clients Say</h2>
-          <p className="text-lg text-gray-300 mt-4">Hear from those who have experienced paradise with us.</p>
+      {/* Section Title and Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-90 z-10"></div>
+      
+      <div className="relative z-20 h-full flex flex-col items-center justify-center py-14 px-4 lg:px-0">
+        <div className="text-center mb-12 max-w-7xl mx-auto">
+          <h2 className="font-normal text-4xl md:text-5xl text-pearl mb-6">
+            What Our Clients Say
+          </h2>
+          <p className="text-lg md:text-xl text-pearl">
+            Real experiences from travelers who’ve discovered Madagascar with us.
+          </p>
         </div>
-        
-        {/* Slider des témoignages */}
-        <div className="relative z-20 max-w-7xl mx-auto px-4 lg:px-0">
+
+        {/* Testimonial Slider */}
+        <div className="w-full max-w-4xl mx-auto">
           <Slider {...settings}>
             {testimonials.map((testimonial, index) => (
               <div key={index} className="px-4">
-                <div className="bg-gray-800 bg-opacity-80 p-8 rounded-lg shadow-lg">
-                  <p className="text-xl italic mb-6">"{testimonial.testimonial}"</p>
-                  <div className="text-center">
-                    <h4 className="text-2xl font-Poppins font-semibold text-blue-400">{testimonial.name}</h4>
-                    <p className="text-gray-400">{testimonial.location}</p>
+                <div className="bg-[#1EA5E0] p-10 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-500">
+                  <p className="text-xl md:text-2xl italic mb-6 leading-relaxed text-white">
+                    "{testimonial.testimonial}"
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <h4 className="text-2xl md:text-3xl font-bold text-yellow-300">{testimonial.name}</h4>
+                      <p className="text-sm text-gray-300">{testimonial.location}</p>
+                    </div>
+                    <div className="flex items-center text-yellow-400">
+                      <span className="text-3xl font-bold">{testimonial.rating}</span>
+                      <span className="text-xl">/10</span>
+                    </div>
                   </div>
                 </div>
               </div>

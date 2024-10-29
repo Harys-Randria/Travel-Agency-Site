@@ -2,15 +2,19 @@ import React from 'react'
 import AboutUs from '../section/AboutUs'
 import Destination from '../section/Destination'
 import TestimonialSection from '../section/Testimonials'
-import AboutUsss from '../section/AboutUsss'
+import HeroSection from '../section/HeroSection'
+import TeamSection from '../section/TeamSection'
+import Gallery from '../section/Gallery'
 
 const HomePage = () => {
   return (
     <div>
-        <AboutUs />
-        <AboutUsss />
-        <Destination />
-        <TestimonialSection />
+      <HeroSection/>
+      <Destination />
+      <AboutUs />
+      <TeamSection />
+      <Gallery />
+      <TestimonialSection />
     </div>
   )
 }

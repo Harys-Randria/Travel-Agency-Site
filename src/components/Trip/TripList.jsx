@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import listdata from './TripData';
-import TripCard from './TripCard';
 import RangeSlider from 'react-range-slider-input';
 import 'react-range-slider-input/dist/style.css';
 

@@ -5,9 +5,8 @@ import NavigationBar from './components/Navbar/NavigationBar';
 import HomePage from './pages/HomePage';
 import TripPage from './pages/TripPage';
 import DetailsPage from './pages/DetailsPage';
-import MySection from './components/sample/MySection';
 import { ParallaxProvider } from 'react-scroll-parallax';
-import CarRentalPage from './pages/CarRentalPage';
+import RentalCarPage from './pages/RentalCarPage';
 
 function App() {
   return (
@@ -18,9 +17,8 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/trip" element={<TripPage />} />
-            <Route path="/destination-details/:id" element={<DetailsPage />} />
-            <Route path='/sample' element={ <MySection /> } />
-            <Route path='/cars' element={ <CarRentalPage /> } />
+            <Route path="/destination-details" element={<DetailsPage />} />
+            <Route path='/cars' element={ <RentalCarPage /> } />
           </Routes>
           <Footer />
         </div>

@@ -1,23 +1,45 @@
-// src/pages/DetailsPage.jsx
-import React, { useEffect } from 'react';
-import DestinationDetails from './DestinationDetails';
-import { useParams } from 'react-router-dom';
-import listdata from '../components/Trip/TripData'; // Suppose you have a TripData.js that contains all destinations
+import React from 'react';
+import DestinationCard from '../components/Destination/DestinationCard';
 
 const DetailsPage = () => {
-  const { id } = useParams();
-  const destination = listdata.find((trip) => trip.id === parseInt(id));
+  const destinations = [
+    {
+      name: 'Nosy Be, Madagascar',
+      description: 'Nosy Be est une magnifique île tropicale située au large de la côte nord-ouest de Madagascar, connue pour ses plages paradisiaques, ses récifs coralliens et ses superbes couchers de soleil.',
+      imageUrl: 'https://cdn.pixabay.com/photo/2019/05/08/18/22/river-4189256_960_720.jpg',
+      activities: ['Plongée sous-marine', 'Excursion en bateau', 'Safari en forêt tropicale', 'Snorkeling', 'Visite des îles environnantes'],
+      bestTime: 'Avril à Novembre',
+      price: '1200',
+      onBookNow: () => alert('Réservation Nosy Be !'),
+    },
+    {
+      name: 'Antananarivo, Madagascar',
+      description: 'La capitale animée de Madagascar, entourée de collines verdoyantes, avec une riche histoire et une culture fascinante à explorer.',
+      imageUrl: 'https://cdn.pixabay.com/photo/2021/03/25/21/21/city-6124245_960_720.jpg',
+      activities: ['Visite des palais royaux', 'Marchés artisanaux', 'Dégustation de cuisine locale', 'Randonnées'],
+      bestTime: 'Mai à Octobre',
+      price: '800',
+      onBookNow: () => alert('Réservation Antananarivo !'),
+    }
+  ];
 
-  useEffect(() => {
-    // Scroll to the top when the component mounts
-    window.scrollTo(0, 0);
-  }, [id]);
-
-  if (!destination) {
-    return <p>Destination non trouvée.</p>;
-  }
-
-  return <DestinationDetails destination={destination} />;
+  return (
+    <div className="pt-16"> {/* Ajout de padding-top pour éviter la superposition avec le navbar */}
+      {destinations.map((destination, index) => (
+        <DestinationCard
+          key={index}
+          name={destination.name}
+          description={destination.description}
+          imageUrl={destination.imageUrl}
+          activities={destination.activities}
+          bestTime={destination.bestTime}
+          price={destination.price}
+          onBookNow={destination.onBookNow}
+        />
+      ))}
+    </div>
+  );
 };
 
 export default DetailsPage;
+

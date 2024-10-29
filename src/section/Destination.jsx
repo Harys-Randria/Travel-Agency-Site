@@ -1,102 +1,92 @@
 import React from 'react';
 
-const DestinationLists = ({ title, description, images, reverse, link }) => {
+const DestinationCard = ({ title, description, image, link }) => {
   return (
-    <div className={`flex ${reverse ? 'flex-row-reverse' : 'flex-row'} items-center my-10`}>
+    <div className="relative group overflow-hidden rounded-lg shadow-lg transform transition duration-300 ease-in-out hover:scale-105">
+      {/* Image */}
+      <img
+        src={image}
+        alt={title}
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+      />
       
-      {/* Description */}
-      <div className='w-1/2 p-5 font-Spinnaker'>
-        <h2 className='text-4xl font-bold text-black mb-3'>{title}</h2>
-        <p className='text-lg leading-relaxed text-gray-700'>{description}</p>
-        <a 
-          href={link} 
-          className='text-blue-600 mt-4 inline-block hover:text-blue-800 transition-colors duration-200'
-        >
-          Plus de détails &rarr;
-        </a>
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+        <div>
+          <h3 className="text-white text-2xl font-semibold mb-2">{title}</h3>
+          <p className="text-gray-200 mb-4">{description}</p>
+          <a
+            href={link}
+            className="inline-block bg-yellow-500 text-gray-900 font-semibold py-2 px-4 rounded-lg transition-colors duration-300 hover:bg-yellow-600"
+          >
+            Explore
+          </a>
+        </div>
       </div>
-      
-      {/* Images */}
-      <div className='w-1/2 grid grid-cols-2 gap-2 p-5'>
-        {images.map((image, index) => (
-          <div key={index} className='overflow-hidden rounded-lg shadow-lg'>
-            <img 
-              src={image} 
-              alt={`Destination ${index}`} 
-              className='object-cover h-full w-full transition-transform duration-300 hover:scale-105' 
-            />
-          </div>
-        ))}
-      </div>
-      
     </div>
   );
 };
 
-const Destination = () => {
+const Destinations = () => {
   const destinations = [
     {
       title: 'Nosy Be',
-      description: 'Explorez l’île paradisiaque de Nosy Be avec ses plages immaculées et ses couchers de soleil spectaculaires.',
-      images: [
-        'https://cdn.pixabay.com/photo/2020/04/26/16/29/nosy-bee-5096063_1280.jpg',
-        'https://cdn.pixabay.com/photo/2020/04/26/16/39/madagascar-5096080_1280.jpg'
-      ],
-      reverse: false,
-      link: '/nosy-be'
+      description: 'Paradise island with pristine beaches and spectacular sunsets.',
+      image: 'https://cdn.pixabay.com/photo/2020/04/26/16/29/nosy-bee-5096063_1280.jpg',
+      link: '/nosy-be',
     },
     {
       title: 'Antananarivo',
-      description: 'Découvrez la capitale vibrante de Madagascar, pleine de culture, d’histoire, et de marchés colorés.',
-      images: [
-        'https://cdn.pixabay.com/photo/2017/03/16/19/52/town-2150061_1280.jpg',
-        'https://cdn.pixabay.com/photo/2020/03/26/13/15/micheline-4970420_1280.jpg'
-      ],
-      reverse: true,
-      link: '/antananarivo'
+      description: 'Vibrant capital with rich culture, history, and colorful markets.',
+      image: 'https://cdn.pixabay.com/photo/2017/03/16/19/52/town-2150061_1280.jpg',
+      link: '/antananarivo',
     },
     {
       title: 'Toamasina',
-      description: 'Découvrez Toamasina, le plus grand port de Madagascar, avec ses plages bordées de palmiers et son ambiance tropicale vibrante.',
-      images: [
-        'https://cdn.pixabay.com/photo/2020/01/26/17/01/lemur-4795249_1280.jpg',
-        'https://cdn.pixabay.com/photo/2014/07/05/17/10/chameleon-384957_1280.jpg'
-      ],
-      reverse: false,
-      link: '/toamasina'
+      description: 'Largest port with palm-fringed beaches and a tropical vibe.',
+      image: 'https://cdn.pixabay.com/photo/2020/01/26/17/01/lemur-4795249_1280.jpg',
+      link: '/toamasina',
     },
     {
       title: 'Tuléar',
-      description: 'Explorez la ville ensoleillée de Tuléar, porte d’entrée du sud de Madagascar, célèbre pour ses récifs coralliens et ses plages étincelantes.',
-      images: [
-        'https://cdn.pixabay.com/photo/2019/10/29/15/30/madagascar-4587230_1280.jpg',
-        'https://cdn.pixabay.com/photo/2013/03/20/10/44/island-95159_1280.jpg'
-      ],
-      reverse: true,
-      link: '/tulear'
+      description: 'Sunny city with coral reefs and stunning beaches.',
+      image: 'https://cdn.pixabay.com/photo/2019/10/29/15/30/madagascar-4587230_1280.jpg',
+      link: '/tulear',
     },
   ];
 
   return (
-    <div className='bg-pearl py-20 font-Poppins'>
-      <div className='text-center mb-12'>
-        <h1 className='font-normal text-5xl font-Poppins text-gray-900 mb-6'>Explorez Nos Destinations</h1>
-        <p className='text-lg mt-4 text-gray-600'>Découvrez des lieux extraordinaires à travers Madagascar.</p>
+    <section className="bg-pearl py-20">
+      <div className="text-center mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-900">Explore Our Destinations</h1>
+        <p className="text-lg md:text-xl mt-4 text-gray-600">
+          Discover extraordinary places across Madagascar.
+        </p>
       </div>
-      <div className='max-w-7xl mx-auto'>
-        {destinations.map((dest, index) => (
-          <DestinationLists 
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto px-5">
+        {destinations.map((destination, index) => (
+          <DestinationCard
             key={index}
-            title={dest.title}
-            description={dest.description}
-            images={dest.images}
-            reverse={dest.reverse}
-            link={dest.link}
+            title={destination.title}
+            description={destination.description}
+            image={destination.image}
+            link={destination.link}
           />
         ))}
       </div>
-    </div>
+
+      {/* "See All Offers" Link */}
+      <div className="text-center mt-12">
+        <a
+          href="/all-offers"
+          className="inline-block bg-blue-600 text-white font-semibold py-3 px-6 rounded-full transition-transform duration-300 transform hover:scale-105 hover:bg-blue-700"
+        >
+          See All Offers
+        </a>
+      </div>
+    </section>
   );
 };
 
-export default Destination;
+export default Destinations;

@@ -8,6 +8,14 @@ module.exports = withMT({
   theme: {
     extend: {
       colors: {
+        tropical: {
+          100: '#ffeccc',
+          200: '#ffd1a9',
+          300: '#ffad5e',
+          400: '#ff8c42',
+          500: '#ff7b25',
+          600: '#d86b1f',
+        },
         'pearl': '#FBFCF8',
         'Off-white' : '#FAF9F6',
         'blue-principal': '#1EA5E0',
