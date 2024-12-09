@@ -14,10 +14,17 @@ const HeroSection = () => {
         </p>
         <a
           href="/destinations"
-          className="bg-yellow-500 text-gray-900 font-semibold py-3 px-6 rounded-full text-lg hover:bg-yellow-600 transition-transform duration-300 transform hover:scale-105"
+          className="relative inline-flex items-center bg-orange-500 text-white font-semibold py-4 px-8 rounded-full text-lg hover:bg-orange-600 transition-transform duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-orange-300"
         >
-          Start Your Journey
+          <span className="absolute inset-0 w-full h-full rounded-full animate-pulse bg-orange-400 opacity-50"></span>
+          <span className="relative z-10 flex items-center">
+            <svg className="mr-2" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 12h14M12 5l7 7-7 7z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            Start Your Journey
+          </span>
         </a>
+
       </div>
     </section>
   );

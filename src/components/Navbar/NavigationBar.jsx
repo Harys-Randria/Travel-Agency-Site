@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import TravelButton from '../TravelButon';
 import { FaBars, FaTimes } from 'react-icons/fa'; // Import des icônes pour le menu mobile
 
 const NavigationBar = () => {
@@ -40,31 +39,24 @@ const NavigationBar = () => {
           </div>
 
           {/* Navigation Links - Desktop */}
-          <div className={`hidden md:flex space-x-6 z-50 font-medium ${isScrolled ? 'text-black' : 'text-white'}`}>
+          <div className={`hidden md:flex justify-center items-center space-x-6 z-50 font-medium ${isScrolled ? 'text-black' : 'text-white'}`}>
             <Link to="/" className="hover:text-blue-second">Home</Link>
-            <Link to="/trip" className="hover:text-blue-second">Trip</Link>
-            <Link to="/about-us" className="hover:text-blue-second">About Us</Link>
-            <Link to="/our-tours" className="hover:text-blue-second">Our Tours</Link>
+            <Link to="/destination" className="hover:text-blue-second">Trip</Link>
+            <Link to="/aboutus" className="hover:text-blue-second">About Us</Link>
             <Link to="/cars" className="hover:text-blue-second">Cars</Link>
-            <Link to="/contact" className="hover:text-blue-second">Contact</Link>
+            <Link to="/contactus" className="hover:text-blue-second">Contact</Link>
           </div>
 
-          {/* User Actions */}
-          <div className="hidden md:flex items-center space-x-4 z-50">
-            <TravelButton text={'Book Now'} />
-          </div>
         </div>
 
         {/* Menu Mobile */}
         {isMenuOpen && (
           <div className={`md:hidden z-40 bg-white shadow-lg rounded-lg p-6 space-y-4 ${isScrolled ? 'text-black' : 'text-white'}`}>
             <Link to="/" onClick={() => setIsMenuOpen(false)} className="block hover:text-blue-second">Home</Link>
-            <Link to="/trip" onClick={() => setIsMenuOpen(false)} className="block hover:text-blue-second">Trip</Link>
-            <Link to="/about-us" onClick={() => setIsMenuOpen(false)} className="block hover:text-blue-second">About Us</Link>
-            <Link to="/our-tours" onClick={() => setIsMenuOpen(false)} className="block hover:text-blue-second">Our Tours</Link>
+            <Link to="/destination" onClick={() => setIsMenuOpen(false)} className="block hover:text-blue-second">Trip</Link>
+            <Link to="/aboutus" onClick={() => setIsMenuOpen(false)} className="block hover:text-blue-second">About Us</Link>
             <Link to="/cars" onClick={() => setIsMenuOpen(false)} className="block hover:text-blue-second">Cars</Link>
-            <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="block hover:text-blue-second">Contact</Link>
-            <TravelButton text={'Book Now'} />
+            <Link to="/contactus" onClick={() => setIsMenuOpen(false)} className="block hover:text-blue-second">Contact</Link>
           </div>
         )}
       </div>

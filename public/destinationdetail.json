@@ -1,0 +1,36 @@
+{
+    "title": "Voyage à Bali",
+    "days": 7,
+    "overview": "Découvrez les paysages époustouflants et la riche culture de Bali en 7 jours.",
+    "images": [
+      "https://cdn.pixabay.com/photo/2019/07/06/08/42/bali-4319964_960_720.jpg",
+      "https://cdn.pixabay.com/photo/2016/11/08/05/54/agriculture-1807581_960_720.jpg",
+      "https://cdn.pixabay.com/photo/2014/01/01/13/32/bali-237196_960_720.jpg"
+    ],
+    "itinerary": [
+      { "day": 1, "title": "Arrivée à Bali", "description": "Accueil et transfert à l'hôtel." },
+      { "day": 2, "title": "Exploration d'Ubud", "description": "Visite des rizières et du marché d'Ubud." },
+      { "day": 3, "title": "Temple de Tanah Lot", "description": "Découverte du célèbre temple en bord de mer." },
+      { "day": 4, "title": "Plongée à Amed", "description": "Journée plongée dans les eaux cristallines d'Amed." },
+      { "day": 5, "title": "Mont Batur", "description": "Randonnée matinale pour un lever de soleil sur le mont Batur." },
+      { "day": 6, "title": "Plages de Nusa Dua", "description": "Détente sur les plages paradisiaques de Nusa Dua." },
+      { "day": 7, "title": "Retour", "description": "Transfert à l'aéroport pour le vol retour." }
+    ],
+    "includes": [
+      "Hébergement 4 étoiles",
+      "Petit déjeuner quotidien",
+      "Guide local anglophone",
+      "Transferts aéroport"
+    ],
+    "excludes": [
+      "Vols internationaux",
+      "Assurance voyage",
+      "Dépenses personnelles",
+      "Pourboires"
+    ],
+    "location": {
+      "latitude": -8.3405,
+      "longitude": 115.0920
+    }
+  }
+  

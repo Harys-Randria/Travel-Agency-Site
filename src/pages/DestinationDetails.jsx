@@ -1,48 +1,95 @@
-// src/components/DestinationDetails.jsx
-import React, { useState } from 'react';
-import HeroSection from '../components/TripDetail/HeroSection';
-import DescriptionSection from '../components/TripDetail/DescriptionSection';
-import HighlightsSection from '../components/TripDetail/HighlightsSection';
-import GallerySection from '../components/TripDetail/GallerySection';
-import BookingSection from '../components/TripDetail/BookingSection';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import DestinationHeader from '../components/DestinationDetails/DestinationHeader';
+import ImageCarousel from '../components/DestinationDetails/ImageCarousel';
+import TabNavigation from '../components/DestinationDetails/TabNavigation';
+import Overview from '../components/DestinationDetails/Overview';
+import Itinerary from '../components/DestinationDetails/Itinerary';
+import IncludesExcludes from '../components/DestinationDetails/IncludesExcludes';
+import Map from '../components/DestinationDetails/Map';
 
-const tabs = [
-  { id: 'hero', label: 'Overview' },
-  { id: 'description', label: 'Description' },
-  { id: 'highlights', label: 'Highlights' },
-  { id: 'gallery', label: 'Gallery' },
-  { id: 'booking', label: 'Booking' },
-];
+const DestinationDetails = () => {
+  const { id } = useParams();
+  const [data, setData] = useState(null);
+  const [activeTab, setActiveTab] = useState('Overview');
 
-const DestinationDetails = ({ destination }) => {
-  const [activeTab, setActiveTab] = useState('hero');
+  useEffect(() => {
+    fetch('/destinations.json')
+      .then((response) => response.json())
+      .then((destinations) => {
+        const selectedDestination = destinations.find(
+          (destination) => destination.id === parseInt(id)
+        );
+        setData(selectedDestination);
+      })
+      .catch((error) =>
+        console.error('Error loading destination details:', error)
+      );
+  }, [id]);
+
+  if (!data) {
+    return (
+      <div className="p-10 max-w-7xl mx-auto">
+        <div className="animate-pulse">
+          <div className="h-12 bg-gray-300 rounded-md mb-4"></div>
+          <div className="h-64 bg-gray-300 rounded-md"></div>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="max-w-7xl mx-auto p-6">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      // className="min-h-screen pt-16" // Ajout du padding-top pour la Navbar
+    >
+      {/* Hero Section */}
+      <section className="relative h-[60vh] bg-cover bg-center" style={{ backgroundImage: "url('https://cdn.pixabay.com/photo/2020/01/30/20/34/madagascar-4806491_960_720.jpg')" }}>
+        <div className="absolute inset-0 bg-black opacity-60 flex items-center justify-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-yellow-400">{data.title}</h1>
+        </div>
+      </section>
+
+      {/* Header Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <DestinationHeader title={data.title} days={data.days} />
+      </div>
+
+      {/* Carousel Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ImageCarousel images={data.images} />
+      </div>
+
       {/* Tab Navigation */}
-      <div className="flex justify-around bg-teal-100 rounded-lg mb-6 shadow-md">
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            className={`py-3 px-6 font-semibold transition duration-300 ${
-              activeTab === tab.id ? 'bg-teal-600 text-white' : 'text-teal-600 hover:bg-teal-200'
-            }`}
-            onClick={() => setActiveTab(tab.id)}
-          >
-            {tab.label}
-          </button>
-        ))}
+      <div className="sticky top-0 bg-white shadow-md z-50">
+        <TabNavigation
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          tabs={['Overview', 'Itinerary', 'Includes/Excludes', 'Map']}
+        />
       </div>
 
       {/* Tab Content */}
-      <div className="bg-white shadow-lg rounded-lg p-6">
-        {activeTab === 'hero' && <HeroSection image={destination.image} title={destination.title} />}
-        {activeTab === 'description' && <DescriptionSection description={destination.description} />}
-        {activeTab === 'highlights' && <HighlightsSection highlights={destination.highlights} />}
-        {activeTab === 'gallery' && <GallerySection images={destination.gallery} />}
-        {activeTab === 'booking' && <BookingSection price={destination.price} duration={destination.duration} />}
-      </div>
-    </div>
+      <motion.div
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6"
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.3 }}
+      >
+        {activeTab === 'Overview' && <Overview description={data.overview} />}
+        {activeTab === 'Itinerary' && <Itinerary details={data.itinerary} />}
+        {activeTab === 'Includes/Excludes' && (
+          <IncludesExcludes
+            includes={data.includes}
+            excludes={data.excludes}
+          />
+        )}
+        {activeTab === 'Map' && <Map location={data.location} />}
+      </motion.div>
+    </motion.div>
   );
 };
 
