@@ -1,36 +1,36 @@
 [
     {
       "id": 1,
-      "title": "Nosy Be",
+      "title": "River trip to the Tsingy",
       "description": "Paradise island with pristine beaches and spectacular sunsets.",
       "image": "https://cdn.pixabay.com/photo/2020/04/26/16/29/nosy-bee-5096063_1280.jpg",
-      "region": "North",
-      "price": "$150",
+      "region": "south",
+      "price": 150,
       "link": "/nosy-be",
       "days": 5,
-      "overview": "Discover the tropical paradise of Nosy Be, with its stunning beaches, crystal-clear waters, and vibrant marine life.",
+      "overview": "A trip to the Tsiribihina River and the Tsingy de Bemaraha National Park in Madagascar offers a blend of breathtaking landscapes, cultural encounters, and wildlife exploration The Tsiribihina River trip typically involves a multi-day canoe or motorboat journey through stunning riverine landscapes. Along the way, you’ll see diverse wildlife such as lemurs, crocodiles, chameleons, and a variety of birds. The river banks are dotted with baobab trees, small villages, and cascading waterfalls, such as the Anosin’ampela Waterfall. This is an excellent opportunity to meet local Malagasy communities, learn about their traditions, and experience their hospitality. Nights are spent camping on the riverbanks under star-filled skies.",
       "images": [
         "https://cdn.pixabay.com/photo/2020/04/26/16/29/nosy-bee-5096063_1280.jpg",
         "https://cdn.pixabay.com/photo/2020/04/26/16/39/madagascar-5096080_1280.jpg"
       ],
       "itinerary": [
-        { "day": 1, "title": "Arrival in Nosy Be", "description": "Transfer to the hotel and relax on the beach." },
-        { "day": 2, "title": "Marine Adventure", "description": "Snorkeling and diving in vibrant coral reefs." },
-        { "day": 3, "title": "Island Exploration", "description": "Visit Lokobe Reserve and spot unique wildlife." },
-        { "day": 4, "title": "Relaxation", "description": "Enjoy a spa day or explore local markets." },
-        { "day": 5, "title": "Departure", "description": "Transfer to the airport for your return flight." }
+        { "day": 1, "title": "Antananarivo to Antsirabe", "description": "Meet your driver at the hotel. Half day  drive to Antsirabe through the highlang scenery. Check-in at the hotel. Reach the by bike or by car the Tritriva lac where  start a  short walk around the cratera of an old volcanoes. Back to the hotel at the end of afternoon." },
+        { "day": 2, "title": "Antsirabe to Miandrivazo", "description": "After a visit of the zebu horn workshop lead to Miandrivazo. The drive is about 7 hours but some stop on the way for pictures of the savana landscape and goldmine town. " },
+        { "day": "3 to 4", "title": "Miandrivazo - River trip", "description": "Leave Miandrivazo and drive to the harbour. The sailing team are waiting for you in Masiakampy village where the river trip start. The river is a shelter of different species of Fauna and Flora,  a perfect spotlight for wildlife lover and for photography lover's. The scenery offer different and unique landscape, Gorge, local Hut and you will see the daily routines of People living allong the river. Fullboard and camping during the river trip. " },
+        { "day": 5, "title": "Belo sur Tsiribihina to Bekopaka", "description": "Last lorning to enjoy the sailing to reach Belo sur Tsiribihina where the car is. Lunch in town and keep on driving to reach our destination at the end of the day." },
+        { "day": 6, "title": "Tsingy of Bemaraha National Park", "description": "Pick up your picnic lunch at the hotel  and drive to the park entrance for about one and half hours. The Tsingy of Bemaraha is a unique and striking geological formation located in western Madagascar, within the Bemaraha National Park. Known for its dramatic limestone formations, the word \"Tsingy\" comes from the Malagasy language and means \"where one cannot walk barefoot.\" This refers to the razor-sharp, jagged limestone pinnacles that dominate the landscape, creating a labyrinthine terrain that. is both spectacular and treacherous. Drive back in the afternoon to the hotel. " },
+        { "day": 7, "title": "Bekopaka Kirindy forest", "description": "Full Day drive to Kirindy with stop for lunch in Belo sur Tsiribihina before crossing the river on the  ferry boat. Check in at the hotel and night walk in the kirindy reserve to spot the mousse lemurs and nocturnal wildlife. " },
+        { "day": 8, "title": "Kirindy-Baobab Alley- Morondava", "description": "Morning visite of the Kirindy forest for about 2 hour. The forest is a shelter of several mamifer such as the fosa and différent Kind of lemur. After the hike, relax  and lunch at the hotel before living for the sunset at the Baiba alley. Drive to morondava and check in at the hotel." },
+        { "day": 9, "title": "Morondava- Antsirabe", "description": "Full Day drive to Antsirabe and some stop on the road for picture and break. Overnight at the hotel. " },
+        { "day": 10, "title": "Antsirabe -Antananarivo", "description": "No rush, only half Day drive to Antananarivo through the highlands Landscape.Some stop on the road to buy some souvenirs or taste some local food. Drive tour around Antananarivo city to  discover the story of Merina tribes. Check in at the hotel " }
       ],
       "includes": [
-        "Accommodation in beachfront resorts",
-        "Daily breakfast",
-        "Local guide",
-        "Airport transfers"
+        "4wd Car with English driver ",
+        "Accommodation on Bed and breakfast",
+        "Full board du ring the river trip ",
+        "Parc and reserve fees"
       ],
       "excludes": [
-        "Flights to Madagascar",
-        "Travel insurance",
-        "Personal expenses",
-        "Tips"
       ],
       "location": {
         "latitude": -13.3451,
@@ -43,7 +43,7 @@
       "description": "Vibrant capital with rich culture, history, and colorful markets.",
       "image": "https://cdn.pixabay.com/photo/2017/03/16/19/52/town-2150061_1280.jpg",
       "region": "Central",
-      "price": "$120",
+      "price": 120,
       "link": "/antananarivo",
       "days": 3,
       "overview": "Explore the bustling capital of Madagascar, Antananarivo, known for its historic sites and lively atmosphere.",
@@ -79,7 +79,7 @@
       "description": "Largest port with palm-fringed beaches and a tropical vibe.",
       "image": "https://cdn.pixabay.com/photo/2020/01/26/17/01/lemur-4795249_1280.jpg",
       "region": "East",
-      "price": "$130",
+      "price": 130,
       "link": "/toamasina",
       "days": 4,
       "overview": "Experience the vibrant port city of Toamasina, famous for its beaches, tropical vibe, and colonial architecture.",
@@ -115,7 +115,7 @@
       "description": "Sunny city with coral reefs and stunning beaches.",
       "image": "https://cdn.pixabay.com/photo/2019/10/29/15/30/madagascar-4587230_1280.jpg",
       "region": "South",
-      "price": "$140",
+      "price": 140,
       "link": "/tulear",
       "days": 6,
       "overview": "Enjoy the sunny coastal city of Tuléar, known for its coral reefs, vibrant marine life, and relaxed atmosphere.",

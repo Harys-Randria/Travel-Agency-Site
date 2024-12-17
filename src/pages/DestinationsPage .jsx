@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 
 const regions = {
@@ -9,23 +9,86 @@ const regions = {
   Central: 'bg-purple-500',
 };
 
+const DestinationCard = ({ dest, index }) => (
+  <motion.div
+    key={dest.id}
+    className="relative bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105"
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay: index * 0.1 }}
+  >
+    {/* Region Badge */}
+    <span
+      className={`absolute top-4 left-4 px-3 py-1 rounded-full text-white font-semibold ${regions[dest.region]}`}
+    >
+      {dest.region}
+    </span>
+
+    {/* Destination Image */}
+    <div className="relative overflow-hidden">
+      <img
+        src={dest.image}
+        alt={dest.name}
+        className="w-full h-56 object-cover transition-transform duration-300 transform hover:scale-110"
+      />
+    </div>
+
+    {/* Destination Info */}
+    <div className="p-6">
+      <h3 className="text-2xl font-bold text-gray-800 mb-2">{dest.title}</h3>
+      <p className="text-gray-600 mb-4">{dest.description}</p>
+      <p className="text-yellow-500 font-semibold text-lg">{dest.price}</p>
+      <a
+        href={`/destination/${dest.id}`}
+        className="mt-4 block w-full text-center px-4 py-2 bg-yellow-500 text-gray-900 font-semibold rounded-md hover:bg-yellow-600 transition-transform transform hover:scale-105"
+      >
+        Explore
+      </a>
+    </div>
+  </motion.div>
+);
+
 const DestinationsPage = () => {
   const [destinations, setDestinations] = useState([]);
   const [selectedRegion, setSelectedRegion] = useState('All');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Fetch data dynamically
   useEffect(() => {
-    fetch('/destinations.json') // Replace with the actual path to your JSON file
+    fetch('/destinations.json')
       .then((response) => response.json())
-      .then((data) => setDestinations(data))
-      .catch((error) => console.error('Error fetching destinations:', error));
+      .then((data) => {
+        setDestinations(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setError('Failed to fetch destinations.');
+        setLoading(false);
+      });
   }, []);
 
-  // Filter destinations based on region
-  const filteredDestinations =
-    selectedRegion === 'All'
+  const filteredDestinations = useMemo(() => {
+    return selectedRegion === 'All'
       ? destinations
       : destinations.filter((dest) => dest.region === selectedRegion);
+  }, [selectedRegion, destinations]);
+
+  if (loading) {
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 max-w-7xl mx-auto py-10">
+        {Array.from({ length: 6 }).map((_, index) => (
+          <div
+            key={index}
+            className="bg-gray-200 rounded-lg h-64 animate-pulse"
+          ></div>
+        ))}
+      </div>
+    );
+  }
+
+  if (error) {
+    return <p className="text-red-500 text-center">{error}</p>;
+  }
 
   return (
     <div className="bg-gray-100">
@@ -50,23 +113,14 @@ const DestinationsPage = () => {
           Explore by Region
         </h2>
         <div className="flex justify-center space-x-4">
-          <button
-            onClick={() => setSelectedRegion('All')}
-            className={`px-4 py-2 rounded-full font-semibold ${
-              selectedRegion === 'All'
-                ? 'bg-yellow-500 text-gray-900'
-                : 'bg-gray-300 text-gray-700 hover:bg-yellow-400'
-            } transition`}
-          >
-            All
-          </button>
-          {Object.keys(regions).map((region) => (
+          {['All', ...Object.keys(regions)].map((region) => (
             <button
               key={region}
+              aria-pressed={selectedRegion === region}
               onClick={() => setSelectedRegion(region)}
               className={`px-4 py-2 rounded-full font-semibold ${
                 selectedRegion === region
-                  ? regions[region]
+                  ? `${regions[region] || 'bg-yellow-500'} text-white`
                   : 'bg-gray-300 text-gray-700 hover:bg-opacity-80'
               } transition`}
             >
@@ -79,48 +133,7 @@ const DestinationsPage = () => {
       {/* Destinations Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 max-w-7xl mx-auto py-10">
         {filteredDestinations.map((dest, index) => (
-          <motion.div
-            key={dest.id}
-            className="relative bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-          >
-            {/* Region Badge */}
-            <span
-              className={`absolute top-4 left-4 px-3 py-1 rounded-full text-white font-semibold ${
-                regions[dest.region]
-              }`}
-            >
-              {dest.region}
-            </span>
-
-            {/* Destination Image */}
-            <div className="relative overflow-hidden">
-              <img
-                src={dest.image}
-                alt={dest.name}
-                className="w-full h-56 object-cover transition-transform duration-300 transform hover:scale-110"
-              />
-            </div>
-
-            {/* Destination Info */}
-            <div className="p-6">
-              <h3 className="text-2xl font-bold text-gray-800 mb-2">
-                {dest.title}
-              </h3>
-              <p className="text-gray-600 mb-4">{dest.description}</p>
-              <p className="text-yellow-500 font-semibold text-lg">
-                {dest.price}
-              </p>
-              <a
-                href={`/destination/${dest.id}`} // Dynamic link to detailed page
-                className="mt-4 block w-full text-center px-4 py-2 bg-yellow-500 text-gray-900 font-semibold rounded-md hover:bg-yellow-600 transition-transform transform hover:scale-105"
-              >
-                Explore
-              </a>
-            </div>
-          </motion.div>
+          <DestinationCard key={dest.id} dest={dest} index={index} />
         ))}
       </div>
     </div>

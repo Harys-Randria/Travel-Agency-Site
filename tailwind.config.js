@@ -23,6 +23,7 @@ module.exports = withMT({
         'green': '#008000',
         'blue-dark': '#1A2D52',
         'green-light': '#C6DFCB',
+        'orange-perso' : '#F26B0F',
       },
 
       fontFamily: {
