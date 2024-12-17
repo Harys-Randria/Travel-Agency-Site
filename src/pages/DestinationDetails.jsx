@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 const DestinationDetails = () => {
   const { id } = useParams();
   const [data, setData] = useState(null);
-  const [startDate, setStartDate] = useState(new Date());
+  const startDate = new Date();
   const [numberOfPeople, setNumberOfPeople] = useState(1);
   const [includeCarRental, setIncludeCarRental] = useState(false);
   const [activeSection, setActiveSection] = useState("Overview");
